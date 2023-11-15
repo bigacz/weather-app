@@ -9,24 +9,34 @@ async function updateInitial() {
   const response = await fetch(
     `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=auto:ip&days=3`
   );
-  cacheData = await response.json();
+
+  const responseData = await response.json();
+  cacheData = processAllData(responseData);
 }
 
 async function updateByTown(town) {
   const response = await fetch(
     `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${town}&days=3`
   );
-  cacheData = await response.json();
+  const responseData = await response.json();
+  cacheData = processAllData(responseData);
 }
 
-// Getting Data //
+// Processing Data //
 
-function getData() {
-  return cacheData;
+function processAllData(unprocessed) {
+  const processedData = {
+    location: processLocationData(unprocessed),
+    current: processCurrentData(unprocessed),
+    days: processDaysData(unprocessed),
+    hours: processHoursData(unprocessed),
+  };
+
+  return processedData;
 }
 
-function getLocationData() {
-  const { location } = cacheData;
+function processLocationData(unprocessed) {
+  const { location } = unprocessed;
 
   const data = {
     country: location.country,
@@ -37,11 +47,11 @@ function getLocationData() {
   return data;
 }
 
-function getCurrentData() {
-  const { current } = cacheData;
-  const { forecast } = cacheData;
+function processCurrentData(unprocessed) {
+  const { current } = unprocessed;
+  const { forecast } = unprocessed;
 
-  const currentDate = new Date(cacheData.location.localtime);
+  const currentDate = new Date(unprocessed.location.localtime);
   const currentHour = getHours(currentDate);
   const currentHourData = forecast.forecastday[0].hour[currentHour];
 
@@ -62,8 +72,8 @@ function getCurrentData() {
   return data;
 }
 
-function getDaysData() {
-  const unprocessedDays = cacheData.forecast.forecastday;
+function processDaysData(unprocessed) {
+  const unprocessedDays = unprocessed.forecast.forecastday;
 
   const processedDays = unprocessedDays.map((day) => {
     const averageCloud = calculateAverageClouds(day.hour);
@@ -84,8 +94,8 @@ function getDaysData() {
   return processedDays;
 }
 
-function getHoursData() {
-  const unprocessedDays = cacheData.forecast.forecastday;
+function processHoursData(unprocessed) {
+  const unprocessedDays = unprocessed.forecast.forecastday;
   const unprocessedHours = unprocessedDays.map((day) => day.hour);
 
   const processedHours = unprocessedHours.map((hours) =>
@@ -95,17 +105,23 @@ function getHoursData() {
   return processedHours;
 }
 
-// TESTING //
+// Getters //
 
-updateByTown('Klobuck').then(() => {
-  console.log(getData());
-  console.log(getLocationData());
-  console.log(getCurrentData());
-  console.log(getDaysData());
-  console.log(getHoursData());
-});
+function getLocationData() {
+  return cacheData.location;
+}
 
-//
+function getCurrentData() {
+  return cacheData.current;
+}
+
+function getDaysData() {
+  return cacheData.days;
+}
+
+function getHoursData() {
+  return cacheData.hours;
+}
 
 // Helper functions //
 
@@ -134,3 +150,27 @@ function calculateAverageClouds(hours) {
 
   return Math.round(cloudSum / 24);
 }
+
+const WeatherData = {
+  updateInitial,
+  updateByTown,
+  getCurrentData,
+  getLocationData,
+  getDaysData,
+  getHoursData,
+};
+
+export default WeatherData;
+
+// TESTING //
+
+/* 
+  updateByTown('Klobuck').then(() => {
+    console.log(getLocationData());
+    console.log(getCurrentData());
+    console.log(getDaysData());
+    console.log(getHoursData());
+  });
+*/
+
+//

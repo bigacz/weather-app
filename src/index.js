@@ -1,3 +1,5 @@
 import 'normalize.css';
 import './index.css';
-import './scripts/weatherData';
+import WeatherData from './scripts/weatherData';
+import WeatherDisplay from './scripts/weatherDisplay';
+import WeatherBarrel from './scripts/weatherBarrel';
