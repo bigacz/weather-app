@@ -26,7 +26,6 @@ async function updateByTown(town) {
 
 function processAllData(unprocessed) {
   const processedData = {
-    location: processLocationData(unprocessed),
     current: processCurrentData(unprocessed),
     days: processDaysData(unprocessed),
     hours: processHoursData(unprocessed),
@@ -35,38 +34,31 @@ function processAllData(unprocessed) {
   return processedData;
 }
 
-function processLocationData(unprocessed) {
-  const { location } = unprocessed;
-
-  const data = {
-    country: location.country,
-    location: location.name,
-    time: location.localtime,
-  };
-
-  return data;
-}
-
 function processCurrentData(unprocessed) {
   const { current } = unprocessed;
   const { forecast } = unprocessed;
+  const { location } = unprocessed;
 
   const currentDate = new Date(unprocessed.location.localtime);
   const currentHour = getHours(currentDate);
   const currentHourData = forecast.forecastday[0].hour[currentHour];
 
+  console.log(unprocessed);
   const data = {
     celsius: Math.round(current.temp_c),
     fahrenheit: Math.round(current.temp_f),
     cloud: current.cloud,
-    gustKph: current.gust_kph,
-    gustMph: current.gust_mph,
+    windKph: current.wind_kph,
+    windMph: current.wind_mph,
     humidity: current.humidity,
     // TODO: check if works at different hours //
     rainChance: currentHourData.chance_of_rain,
     snowChance: currentHourData.chance_of_snow,
     //
     precip: current.precip_mm,
+    country: location.country,
+    town: location.name,
+    time: location.localtime,
   };
 
   return data;
@@ -106,10 +98,6 @@ function processHoursData(unprocessed) {
 }
 
 // Getters //
-
-function getLocationData() {
-  return cacheData.location;
-}
 
 function getCurrentData() {
   return cacheData.current;
@@ -155,7 +143,6 @@ const WeatherData = {
   updateInitial,
   updateByTown,
   getCurrentData,
-  getLocationData,
   getDaysData,
   getHoursData,
 };
@@ -165,8 +152,7 @@ export default WeatherData;
 // TESTING //
 
 /* 
-  updateByTown('Klobuck').then(() => {
-    console.log(getLocationData());
+  updateByTown('Warsaw').then(() => {
     console.log(getCurrentData());
     console.log(getDaysData());
     console.log(getHoursData());

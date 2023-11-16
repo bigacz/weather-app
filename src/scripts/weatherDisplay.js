@@ -1,10 +1,17 @@
-import WeatherData from './weatherData';
-
 const useImperial = false;
 
+const locationDisplay = document.getElementById('current-weather_location');
 const temperatureDisplay = document.getElementById(
   'current-weather_temperature'
 );
+const rainChanceDisplay = document.getElementById('current-weather_rainChance');
+const windSpeedDisplay = document.getElementById('current-weather_windSpeed');
+
+// Display functions //
+
+function setLocation(town, country) {
+  locationDisplay.textContent = `${town}, ${country}`;
+}
 
 function setTemperature(celsius, fahrenheit) {
   if (useImperial) {
@@ -14,19 +21,23 @@ function setTemperature(celsius, fahrenheit) {
   }
 }
 
-// TESTING
+function setRainChance(rainChance) {
+  rainChanceDisplay.textContent = `${rainChance}%`;
+}
 
-const searchInput = document.getElementById('search-town-input');
-const searchSubmitButton = document.getElementById('search-submit');
+function setWindSpeed(kilometers, miles) {
+  if (useImperial) {
+    windSpeedDisplay.textContent = `${miles} mph`;
+  } else {
+    windSpeedDisplay.textContent = `${kilometers} kph`;
+  }
+}
 
-searchSubmitButton.addEventListener('click', (event) => {
-  const location = searchInput.value;
-  WeatherData.updateByTown(location).then((response) => {
-    const data = WeatherData.getCurrentData();
-    setTemperature(data.celsius, data.fahrenheit);
-    console.log(data);
-  });
-  event.preventDefault();
-});
+const WeatherDisplay = {
+  setLocation,
+  setTemperature,
+  setRainChance,
+  setWindSpeed,
+};
 
-export default {};
+export default WeatherDisplay;
