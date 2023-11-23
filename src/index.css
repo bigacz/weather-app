@@ -2,3 +2,8 @@ body {
   background-color: rgb(24, 23, 23);
   color: white;
 }
+
+.weather-icon {
+  height: 100px;
+  width: 100px;
+}

@@ -43,25 +43,27 @@ function processCurrentData(unprocessed) {
   const currentHour = getHours(currentDate);
   const currentHourData = forecast.forecastday[0].hour[currentHour];
 
-  console.log(unprocessed);
-  const data = {
+  const processedCurrent = {
     celsius: Math.round(current.temp_c),
     fahrenheit: Math.round(current.temp_f),
     cloud: current.cloud,
     windKph: current.wind_kph,
     windMph: current.wind_mph,
     humidity: current.humidity,
-    // TODO: check if works at different hours //
     rainChance: currentHourData.chance_of_rain,
     snowChance: currentHourData.chance_of_snow,
-    //
+    isDay: current.is_day,
     precip: current.precip_mm,
+    conditionText: current.condition.text,
     country: location.country,
     town: location.name,
     time: location.localtime,
   };
 
-  return data;
+  const weatherCode = getWeatherCode(processedCurrent);
+  processedCurrent.weatherCode = weatherCode;
+
+  return processedCurrent;
 }
 
 function processDaysData(unprocessed) {
@@ -77,8 +79,13 @@ function processDaysData(unprocessed) {
       averageFahrenheit: weatherData.avgtemp_f,
       rainChance: weatherData.daily_chance_of_rain,
       snowChance: weatherData.daily_chance_of_snow,
+      conditionText: weatherData.condition.text,
+      conditionCode: weatherData.condition.code,
       cloud: averageCloud,
     };
+
+    const weatherCode = getWeatherCode(processedDay);
+    processedDay.weatherCode = weatherCode;
 
     return processedDay;
   });
@@ -122,7 +129,11 @@ function extractHoursData(unprocessedHours) {
       rainChance: hour.chance_of_rain,
       snowChance: hour.chance_of_snow,
       cloud: hour.cloud,
+      isDay: hour.is_day,
     };
+
+    const weatherCode = getWeatherCode(processedHour);
+    processedHour.weatherCode = weatherCode;
 
     return processedHour;
   });
@@ -139,6 +150,35 @@ function calculateAverageClouds(hours) {
   return Math.round(cloudSum / 24);
 }
 
+function getWeatherCode(weather) {
+  const { cloud } = weather;
+  const { rainChance } = weather;
+  const { snowChance } = weather;
+
+  let code;
+  if (Object.hasOwn(weather, 'isDay')) {
+    const isDay = Number(weather.isDay) === 1;
+    if (isDay) {
+      code = 1;
+    } else {
+      code = 2;
+    }
+  } else {
+    code = 1;
+  }
+  if (cloud > 50) {
+    code = 3;
+  }
+  if (rainChance > 30) {
+    code = 4;
+  }
+  if (snowChance > 15) {
+    code = 5;
+  }
+
+  return code;
+}
+
 const WeatherData = {
   updateInitial,
   updateByTown,
@@ -148,15 +188,3 @@ const WeatherData = {
 };
 
 export default WeatherData;
-
-// TESTING //
-
-/* 
-  updateByTown('Warsaw').then(() => {
-    console.log(getCurrentData());
-    console.log(getDaysData());
-    console.log(getHoursData());
-  });
-*/
-
-//
