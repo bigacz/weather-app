@@ -1,4 +1,5 @@
-import WeatherDisplay from './weatherDisplay';
+import CurrentDisplay from './currentDisplay';
+import DaysDisplay from './daysDisplay';
 import WeatherData from './weatherData';
 
 const searchInput = document.getElementById('search-town-input');
@@ -20,17 +21,26 @@ async function handleLocationChange(location) {
   console.log(daysData);
   console.log(hoursData);
 
-  setCurrentDisplays(currentData);
+  setDaysDisplay(daysData);
+  setCurrentDisplay(currentData);
 }
 
-function setCurrentDisplays(current) {
-  WeatherDisplay.setTemperature(current.celsius, current.fahrenheit);
-  WeatherDisplay.setLocation(current.town, current.country);
-  WeatherDisplay.setRainChance(current.rainChance);
-  WeatherDisplay.setWindSpeed(current.windKph, current.windMph);
-  WeatherDisplay.setHumidity(current.humidity);
-  WeatherDisplay.setWeatherIcon(current.weatherCode);
+function setCurrentDisplay(current) {
+  CurrentDisplay.setTemperature(current.celsius, current.fahrenheit);
+  CurrentDisplay.setLocation(current.town, current.country);
+  CurrentDisplay.setRainChance(current.rainChance);
+  CurrentDisplay.setWindSpeed(current.windKph, current.windMph);
+  CurrentDisplay.setHumidity(current.humidity);
+  CurrentDisplay.setWeatherIcon(current.weatherCode);
+  CurrentDisplay.setConditionText(current.conditionText);
 }
+
+function setDaysDisplay(days) {
+  DaysDisplay.setDays(days);
+}
+
+// Helper //
+
 export default {};
 
 // Testing //

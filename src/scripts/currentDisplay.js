@@ -1,8 +1,4 @@
-import sunIcon from '../assets/sun.svg';
-import moonIcon from '../assets/moon.svg';
-import cloudIcon from '../assets/cloud.svg';
-import rainIcon from '../assets/rain.svg';
-import snowIcon from '../assets/snow.svg';
+import IconManager from './iconManager';
 
 const useImperial = false;
 
@@ -10,10 +6,15 @@ const locationDisplay = document.getElementById('current-weather_location');
 const temperatureDisplay = document.getElementById(
   'current-weather_temperature'
 );
-const rainChanceDisplay = document.getElementById('current-weather_rainChance');
-const windSpeedDisplay = document.getElementById('current-weather_windSpeed');
+const rainChanceDisplay = document.getElementById(
+  'current-weather_rain-chance'
+);
+const windSpeedDisplay = document.getElementById('current-weather_wind-speed');
 const humidityDisplay = document.getElementById('current-weather_humidity');
 const weatherIconDisplay = document.getElementById('current-weather_icon');
+const conditionTextDisplay = document.getElementById(
+  'current-weather_condition-text'
+);
 
 // Display functions //
 
@@ -46,37 +47,23 @@ function setHumidity(humidity) {
 }
 
 function setWeatherIcon(code) {
-  let image;
-  switch (code) {
-    case 1:
-      image = sunIcon;
-      break;
-    case 2:
-      image = moonIcon;
-      break;
-    case 3:
-      image = cloudIcon;
-      break;
-    case 4:
-      image = rainIcon;
-      break;
-    case 5:
-      image = snowIcon;
-      break;
-    default:
-      image = sunIcon;
-  }
+  const icon = IconManager.getWeatherIcon(code);
 
-  weatherIconDisplay.src = image;
+  weatherIconDisplay.src = icon;
 }
 
-const WeatherDisplay = {
+function setConditionText(text) {
+  conditionTextDisplay.textContent = text;
+}
+
+const CurrentDisplay = {
   setLocation,
   setTemperature,
   setRainChance,
   setWindSpeed,
   setHumidity,
   setWeatherIcon,
+  setConditionText,
 };
 
-export default WeatherDisplay;
+export default CurrentDisplay;
