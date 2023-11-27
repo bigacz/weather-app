@@ -19,6 +19,7 @@ function createDay(day) {
   const iconDisplay = document.createElement('img');
   const icon = IconManager.getWeatherIcon(day.weatherCode);
   iconDisplay.src = icon;
+
   //
 
   const dayContainer = document.createElement('div');

@@ -1,5 +1,6 @@
 import CurrentDisplay from './currentDisplay';
 import DaysDisplay from './daysDisplay';
+import HoursDisplay from './hoursDisplay';
 import WeatherData from './weatherData';
 
 const searchInput = document.getElementById('search-town-input');
@@ -21,8 +22,9 @@ async function handleLocationChange(location) {
   console.log(daysData);
   console.log(hoursData);
 
-  setDaysDisplay(daysData);
   setCurrentDisplay(currentData);
+  setDaysDisplay(daysData);
+  setHoursDisplay(hoursData);
 }
 
 function setCurrentDisplay(current) {
@@ -37,6 +39,10 @@ function setCurrentDisplay(current) {
 
 function setDaysDisplay(days) {
   DaysDisplay.setDays(days);
+}
+
+function setHoursDisplay(hours) {
+  HoursDisplay.addHour(hours[0][0]);
 }
 
 // Helper //

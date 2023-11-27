@@ -130,6 +130,8 @@ function extractHoursData(unprocessedHours) {
       snowChance: hour.chance_of_snow,
       cloud: hour.cloud,
       isDay: hour.is_day,
+      celsius: Math.round(hour.temp_c),
+      fahrenheit: Math.round(hour.temp_f),
     };
 
     const weatherCode = getWeatherCode(processedHour);
