@@ -38,11 +38,17 @@ function setCurrentDisplay(current) {
 }
 
 function setDaysDisplay(days) {
-  DaysDisplay.setDays(days);
+  DaysDisplay.updateDays(days);
 }
 
 function setHoursDisplay(hours) {
-  HoursDisplay.addHour(hours[0][0]);
+  HoursDisplay.updateHours(hours);
+}
+
+function toggleImperial(useImperial) {
+  CurrentDisplay.toggleImperial(useImperial);
+  DaysDisplay.toggleImperial(useImperial);
+  HoursDisplay.toggleImperial(useImperial);
 }
 
 // Helper //

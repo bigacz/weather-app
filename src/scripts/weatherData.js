@@ -75,8 +75,8 @@ function processDaysData(unprocessed) {
 
     const processedDay = {
       date: new Date(day.date),
-      averageCelsius: weatherData.avgtemp_c,
-      averageFahrenheit: weatherData.avgtemp_f,
+      celsius: Math.round(weatherData.avgtemp_c),
+      fahrenheit: Math.round(weatherData.avgtemp_f),
       rainChance: weatherData.daily_chance_of_rain,
       snowChance: weatherData.daily_chance_of_snow,
       conditionText: weatherData.condition.text,
@@ -96,6 +96,9 @@ function processDaysData(unprocessed) {
 function processHoursData(unprocessed) {
   const unprocessedDays = unprocessed.forecast.forecastday;
   const unprocessedHours = unprocessedDays.map((day) => day.hour);
+
+  const currentHour = getHours(new Date(unprocessed.location.localtime));
+  unprocessedHours[0].splice(0, currentHour);
 
   const processedHours = unprocessedHours.map((hours) =>
     extractHoursData(hours)

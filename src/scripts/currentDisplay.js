@@ -1,6 +1,6 @@
 import IconManager from './iconManager';
 
-const useImperial = false;
+let useImperial = false;
 
 const locationDisplay = document.getElementById('current-weather_location');
 const temperatureDisplay = document.getElementById(
@@ -56,6 +56,10 @@ function setConditionText(text) {
   conditionTextDisplay.textContent = text;
 }
 
+function toggleImperial(futureImperial) {
+  useImperial = futureImperial;
+}
+
 const CurrentDisplay = {
   setLocation,
   setTemperature,
@@ -64,6 +68,7 @@ const CurrentDisplay = {
   setHumidity,
   setWeatherIcon,
   setConditionText,
+  toggleImperial,
 };
 
 export default CurrentDisplay;

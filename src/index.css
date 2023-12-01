@@ -12,18 +12,22 @@ body {
 
 #day-weather_container {
   display: flex;
+  background-color: rgb(14, 14, 14);
 }
 
 #day-weather_container img {
   width: 100%;
   display: flex;
+  height: 200px;
 }
 
 #hour-weather_container {
   display: flex;
+  background-color: rgb(44, 44, 44);
 }
 
 #hour-weather_container img {
   width: 100%;
   display: flex;
+  height: 200px;
 }
