@@ -5,19 +5,17 @@ let cacheData;
 
 // Updating Data //
 
-async function updateInitial() {
-  const response = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=auto:ip&days=3`
-  );
-
-  const responseData = await response.json();
-  cacheData = processAllData(responseData);
-}
-
 async function updateByTown(town) {
   const response = await fetch(
     `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${town}&days=3`
   );
+
+  if (!response.ok) {
+    const error = new Error('Fetch error');
+    error.text = getErrorText(response.status);
+    throw error;
+  }
+
   const responseData = await response.json();
   cacheData = processAllData(responseData);
 }
@@ -184,8 +182,27 @@ function getWeatherCode(weather) {
   return code;
 }
 
+function getErrorText(code) {
+  let errorText;
+  switch (+code) {
+    case 400:
+      errorText = 'No town like that';
+      break;
+    case 403:
+      errorText = 'Bad API key';
+      break;
+    case 404:
+      errorText = '';
+      break;
+    default:
+      errorText = 'Something happened';
+      break;
+  }
+
+  return errorText;
+}
+
 const WeatherData = {
-  updateInitial,
   updateByTown,
   getCurrentData,
   getDaysData,

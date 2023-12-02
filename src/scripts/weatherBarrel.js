@@ -4,6 +4,7 @@ import HoursDisplay from './hoursDisplay';
 import WeatherData from './weatherData';
 
 const searchInput = document.getElementById('search-town-input');
+const searchInputError = document.getElementById('search-town-input-error');
 const searchSubmitButton = document.getElementById('search-submit');
 
 searchSubmitButton.addEventListener('click', (event) => {
@@ -13,18 +14,23 @@ searchSubmitButton.addEventListener('click', (event) => {
 });
 
 async function handleLocationChange(location) {
-  const response = await WeatherData.updateByTown(location);
-  const currentData = WeatherData.getCurrentData();
-  const daysData = WeatherData.getDaysData();
-  const hoursData = WeatherData.getHoursData();
+  try {
+    const response = await WeatherData.updateByTown(location);
 
-  console.log(currentData);
-  console.log(daysData);
-  console.log(hoursData);
+    const currentData = WeatherData.getCurrentData();
+    const daysData = WeatherData.getDaysData();
+    const hoursData = WeatherData.getHoursData();
 
-  setCurrentDisplay(currentData);
-  setDaysDisplay(daysData);
-  setHoursDisplay(hoursData);
+    console.log(currentData);
+    console.log(daysData);
+    console.log(hoursData);
+
+    setCurrentDisplay(currentData);
+    setDaysDisplay(daysData);
+    setHoursDisplay(hoursData);
+  } catch (error) {
+    displayError(error.text);
+  }
 }
 
 function setCurrentDisplay(current) {
@@ -49,6 +55,10 @@ function toggleImperial(useImperial) {
   CurrentDisplay.toggleImperial(useImperial);
   DaysDisplay.toggleImperial(useImperial);
   HoursDisplay.toggleImperial(useImperial);
+}
+
+function displayError(errorText) {
+  searchInputError.textContent = errorText;
 }
 
 // Helper //
