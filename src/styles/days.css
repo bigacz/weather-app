@@ -1,0 +1,22 @@
+.day-weather_container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.day-weather_item {
+  background-color: rgb(73, 73, 73);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content 1fr max-content;
+  justify-items: center;
+}
+
+.day-weather_item-bottom {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+}

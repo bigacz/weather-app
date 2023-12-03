@@ -1,0 +1,25 @@
+.hour-weather_wrapper {
+  overflow: hidden;
+  height: 100%;
+}
+
+.hour-weather_container {
+  height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.hour-weather_item {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content 1fr max-content;
+  justify-items: center;
+}
+
+.hour-weather_item-bottom {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+}

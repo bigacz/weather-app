@@ -6,13 +6,14 @@
     <title>Weather App</title>
   </head>
   <body>
-    <form>
-      <label for="search-town-input">Town:</label>
-      <input type="text" id="search-town-input" name="search-town-input" />
-      <p id="search-town-input-error"></p>
-      <button type="submit" id="search-submit">Search</button>
-    </form>
     <main>
+      <form>
+        <label for="search-town-input">Town:</label>
+        <input type="text" id="search-town-input" name="search-town-input" />
+        <p id="search-town-input-error"></p>
+        <button type="submit" id="search-submit">Search</button>
+      </form>
+
       <p id="current-weather_location"></p>
       <p id="current-weather_temperature"></p>
       <p id="current-weather_rain-chance"></p>
@@ -21,24 +22,34 @@
       <img alt="weather icon" id="current-weather_icon" class="weather-icon" />
       <p id="current-weather_condition-text"></p>
     </main>
-    <div clas="hour-weather_container" id="hour-weather_container"></div>
+    <div class="hour-weather_wrapper">
+      <div class="hour-weather_container" id="hour-weather_container"></div>
+    </div>
     <div class="day-weather_container" id="day-weather_container"></div>
 
     <template id="hour-weather_template">
-      <div>
+      <div class="hour-weather_item">
         <p class="hour-weather_date"></p>
-        <img class="hour-weather_weather-icon" src="" alt="weather icon" />
-        <p class="hour-weather_temperature"></p>
-        <p class="hour-weather_precip"></p>
+        <div>
+          <img class="hour-weather_weather-icon" src="" alt="weather icon" />
+        </div>
+        <div class="hour-weather_item-bottom">
+          <p class="hour-weather_temperature"></p>
+          <p class="hour-weather_precip"></p>
+        </div>
       </div>
     </template>
 
     <template id="day-weather_template">
-      <div>
+      <div class="day-weather_item">
         <p class="day-weather_date"></p>
-        <img class="day-weather_weather-icon" src="" alt="weather icon" />
-        <p class="day-weather_temperature"></p>
-        <p class="day-weather_precip"></p>
+        <div>
+          <img class="day-weather_weather-icon" src="" alt="weather icon" />
+        </div>
+        <div class="day-weather_item-bottom">
+          <p class="day-weather_temperature"></p>
+          <p class="day-weather_precip"></p>
+        </div>
       </div>
     </template>
   </body>

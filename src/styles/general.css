@@ -4,6 +4,20 @@
 }
 
 body {
+  height: 100vh;
   background-color: var(--gray);
   color: white;
+  display: grid;
+
+  /* here */
+  grid-auto-rows: 1fr 10vh 20vh;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+p {
+  margin: 0;
 }
