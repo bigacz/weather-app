@@ -62,16 +62,21 @@ function setDate(hourNode, hour) {
 }
 
 function setPrecip(hourNode, hour) {
-  const precipDisplay = hourNode.querySelector('.hour-weather_precip');
+  const precipDisplay = hourNode.querySelector('.hour-weather_precip-value');
+  const precipImage = hourNode.querySelector('.hour-weather_precip-image');
   const isSnowGreater = hour.snowChance > hour.rainChance;
 
   let precipContent;
+  let precipImageSrc;
   if (isSnowGreater) {
-    precipContent = `${hour.snowChance}% Snow`;
+    precipContent = `${hour.snowChance}%`;
+    precipImageSrc = IconManager.getWeatherIcon(5);
   } else {
-    precipContent = `${hour.rainChance}% Rain`;
+    precipContent = `${hour.rainChance}%`;
+    precipImageSrc = IconManager.getWeatherIcon(4);
   }
   precipDisplay.textContent = precipContent;
+  precipImage.src = precipImageSrc;
 }
 
 const HoursDisplay = {

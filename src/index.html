@@ -22,35 +22,48 @@
       <img alt="weather icon" id="current-weather_icon" class="weather-icon" />
       <p id="current-weather_condition-text"></p>
     </main>
+
     <div class="hour-weather_wrapper">
-      <div class="hour-weather_container" id="hour-weather_container"></div>
+      <div class="hour-weather_slider">
+        <div class="hour-weather_container" id="hour-weather_container"></div>
+      </div>
     </div>
+
     <div class="day-weather_container" id="day-weather_container"></div>
-
-    <template id="hour-weather_template">
-      <div class="hour-weather_item">
-        <p class="hour-weather_date"></p>
-        <div>
-          <img class="hour-weather_weather-icon" src="" alt="weather icon" />
-        </div>
-        <div class="hour-weather_item-bottom">
-          <p class="hour-weather_temperature"></p>
-          <p class="hour-weather_precip"></p>
-        </div>
-      </div>
-    </template>
-
-    <template id="day-weather_template">
-      <div class="day-weather_item">
-        <p class="day-weather_date"></p>
-        <div>
-          <img class="day-weather_weather-icon" src="" alt="weather icon" />
-        </div>
-        <div class="day-weather_item-bottom">
-          <p class="day-weather_temperature"></p>
-          <p class="day-weather_precip"></p>
-        </div>
-      </div>
-    </template>
   </body>
+
+  <template id="hour-weather_template">
+    <div class="hour-weather_item">
+      <p class="hour-weather_date"></p>
+      <div>
+        <img class="hour-weather_weather-icon" src="" alt="weather icon" />
+      </div>
+      <div class="hour-weather_item-bottom">
+        <p class="hour-weather_temperature"></p>
+
+        <div class="hour-weather_precip">
+          <p class="hour-weather_precip-value"></p> 
+          <img class="hour-weather_precip-image"></p>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="day-weather_template">
+    <div class="day-weather_item">
+      <p class="day-weather_date"></pf>
+      <div>
+        <img class="day-weather_weather-icon" src="" alt="weather icon" />
+      </div>
+      <div class="day-weather_item-bottom">
+        <p class="day-weather_temperature"></p>
+
+        <div class="day-weather_precip">
+          <p class="day-weather_precip-value"></p> 
+          <img class="day-weather_precip-image"></p>
+        </div>
+
+      </div>
+    </div>
+  </template>
 </html>

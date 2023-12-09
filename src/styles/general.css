@@ -1,21 +1,27 @@
 :root {
   --white: #ffffff;
   --gray: #272727;
+  --light-gray: #6b6b6b;
+
+  --rpadding1: clamp(0.1rem, 0.2vw, 1rem);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  height: 100vh;
   background-color: var(--gray);
   color: white;
+  height: 100vh;
   display: grid;
-
-  /* here */
-  grid-auto-rows: 1fr 10vh 20vh;
+  grid-auto-rows: 1fr max-content 25vh;
+  gap: 3vh;
 }
 
 img {
-  width: 100%;
-  height: auto;
+  height: 100%;
+  width: auto;
 }
 
 p {

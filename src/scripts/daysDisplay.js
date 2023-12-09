@@ -31,16 +31,21 @@ function addDay(day) {
 }
 
 function setPrecip(dayNode, day) {
-  const precipDisplay = dayNode.querySelector('.day-weather_precip');
+  const precipDisplay = dayNode.querySelector('.day-weather_precip-value');
+  const precipImage = dayNode.querySelector('.day-weather_precip-image');
   const isSnowGreater = day.snowChance > day.rainChance;
 
   let precipContent;
+  let precipImageSrc;
   if (isSnowGreater) {
-    precipContent = `${day.snowChance}% Snow`;
+    precipContent = `${day.snowChance}%`;
+    precipImageSrc = IconManager.getWeatherIcon(5);
   } else {
-    precipContent = `${day.rainChance}% Rain`;
+    precipContent = `${day.rainChance}%`;
+    precipImageSrc = IconManager.getWeatherIcon(4);
   }
   precipDisplay.textContent = precipContent;
+  precipImage.src = precipImageSrc;
 }
 
 function setTemperature(dayNode, day) {

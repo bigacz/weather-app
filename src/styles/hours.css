@@ -1,25 +1,40 @@
 .hour-weather_wrapper {
   overflow: hidden;
-  height: 100%;
+  display: grid;
+  align-content: center;
+}
+
+.hour-weather_slider {
+  overflow: hidden;
 }
 
 .hour-weather_container {
-  height: 100%;
+  white-space: nowrap;
+
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  grid-template-rows: 1fr;
+  grid-auto-columns: clamp(6rem, 10vw, 8rem);
+  grid-template-rows: clamp(6rem, 10vw, 8rem);
+
+  gap: 1rem;
 }
 
 .hour-weather_item {
+  background-color: var(--light-gray);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content 1fr max-content;
   justify-items: center;
+  padding: var(--rpadding1);
 }
 
 .hour-weather_item-bottom {
+  gap: 0.5rem;
   display: flex;
-  gap: 1rem;
   justify-content: space-around;
+}
+
+.hour-weather_precip {
+  display: grid;
+  grid-auto-flow: column;
 }
