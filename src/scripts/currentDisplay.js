@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import IconManager from './iconManager';
 
 let useImperial = false;
@@ -15,6 +16,7 @@ const weatherIconDisplay = document.getElementById('current-weather_icon');
 const conditionTextDisplay = document.getElementById(
   'current-weather_condition-text'
 );
+const clockDisplay = document.getElementById('current-weather_clock');
 
 // Display functions //
 
@@ -56,6 +58,12 @@ function setConditionText(text) {
   conditionTextDisplay.textContent = text;
 }
 
+function setClock(time) {
+  const formattedTime = format(new Date(time), 'hh:mm a');
+
+  clockDisplay.textContent = formattedTime;
+}
+
 function toggleImperial(futureImperial) {
   useImperial = futureImperial;
 }
@@ -69,6 +77,7 @@ const CurrentDisplay = {
   setWeatherIcon,
   setConditionText,
   toggleImperial,
+  setClock,
 };
 
 export default CurrentDisplay;

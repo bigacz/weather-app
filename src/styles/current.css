@@ -2,3 +2,19 @@ main img {
   height: 100px;
   width: 100px;
 }
+
+main {
+  display: grid;
+  grid-template-areas: 'container form';
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.current-weather_form {
+  grid-area: form;
+}
+
+.current-weather_container {
+  grid-area: container;
+}

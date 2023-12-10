@@ -4,6 +4,8 @@
   align-content: center;
   cursor: grab;
   user-select: none;
+  width: 90%;
+  justify-self: center;
 }
 
 .hour-weather_wrapper img {

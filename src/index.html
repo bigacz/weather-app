@@ -7,20 +7,23 @@
   </head>
   <body>
     <main>
-      <form>
+      <form class="current-weather_form">
         <label for="search-town-input">Town:</label>
         <input type="text" id="search-town-input" name="search-town-input" />
         <p id="search-town-input-error"></p>
         <button type="submit" id="search-submit">Search</button>
       </form>
 
-      <p id="current-weather_location"></p>
-      <p id="current-weather_temperature"></p>
-      <p id="current-weather_rain-chance"></p>
-      <p id="current-weather_wind-speed"></p>
-      <p id="current-weather_humidity"></p>
-      <img alt="weather icon" id="current-weather_icon" class="weather-icon" />
-      <p id="current-weather_condition-text"></p>
+      <div class="current-weather_container">
+        <p id="current-weather_location"></p>
+        <p id="current-weather_clock"></p>
+        <p id="current-weather_temperature"></p>
+        <p id="current-weather_rain-chance"></p>
+        <p id="current-weather_wind-speed"></p>
+        <p id="current-weather_humidity"></p>
+        <img alt="weather icon" id="current-weather_icon" class="weather-icon" />
+        <p id="current-weather_condition-text"></p>
+      </div>
     </main>
 
     <div id="hour-weather_wrapper" class="hour-weather_wrapper">

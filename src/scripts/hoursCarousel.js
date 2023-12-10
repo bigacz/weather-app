@@ -52,8 +52,6 @@ function checkBoundary() {
   if (containersDiff < currentTransform) {
     slider.style.transform = `translate(-${containersDiff}px)`;
   }
-
-  console.log(wrapperWidth);
 }
 
 function getTransformX() {
