@@ -4,3 +4,4 @@ import './styles/current.css';
 import './styles/days.css';
 import './styles/hours.css';
 import WeatherBarrel from './scripts/weatherBarrel';
+import './scripts/hoursCarousel';

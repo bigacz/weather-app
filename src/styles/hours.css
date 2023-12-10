@@ -2,20 +2,20 @@
   overflow: hidden;
   display: grid;
   align-content: center;
+  cursor: grab;
+  user-select: none;
+}
+
+.hour-weather_wrapper img {
+  pointer-events: none;
 }
 
 .hour-weather_slider {
-  overflow: hidden;
-}
-
-.hour-weather_container {
   white-space: nowrap;
-
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: clamp(6rem, 10vw, 8rem);
   grid-template-rows: clamp(6rem, 10vw, 8rem);
-
   gap: 1rem;
 }
 

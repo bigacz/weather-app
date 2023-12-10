@@ -4,7 +4,7 @@ import IconManager from './iconManager';
 let useImperial = false;
 
 const hourTemplate = document.getElementById('hour-weather_template');
-const mainContainer = document.getElementById('hour-weather_container');
+const mainContainer = document.getElementById('hour-weather_slider');
 
 function updateHours(hours) {
   clearDisplay();
