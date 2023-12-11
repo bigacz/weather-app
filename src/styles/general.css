@@ -16,7 +16,7 @@ body {
   color: white;
   height: 100vh;
   display: grid;
-  grid-auto-rows: 1fr max-content 25vh;
+  grid-template-rows: 1fr max-content;
   gap: 3vh;
 }
 

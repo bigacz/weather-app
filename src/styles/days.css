@@ -1,13 +1,9 @@
-:root {
-  --padding-days: clamp(10rem, 10vw, 1fr);
-}
-
 .day-weather_container {
   white-space: nowrap;
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(7rem, 15rem);
-  grid-template-rows: minmax(7rem, 15rem);
+  grid-auto-columns: minmax(7rem, 10rem);
+  grid-template-rows: max-content;
   justify-content: center;
   gap: 1rem;
 }

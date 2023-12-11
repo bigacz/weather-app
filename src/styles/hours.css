@@ -3,8 +3,8 @@
   display: grid;
   align-content: center;
   cursor: grab;
+  width: 100%;
   user-select: none;
-  width: 90%;
   justify-self: center;
 }
 
