@@ -3,7 +3,8 @@ import IconManager from './iconManager';
 
 let useImperial = false;
 
-const locationDisplay = document.getElementById('current-weather_location');
+const townDisplay = document.getElementById('current-weather_town');
+const countryDisplay = document.getElementById('current-weather_country');
 const temperatureDisplay = document.getElementById(
   'current-weather_temperature'
 );
@@ -20,8 +21,12 @@ const clockDisplay = document.getElementById('current-weather_clock');
 
 // Display functions //
 
-function setLocation(town, country) {
-  locationDisplay.textContent = `${town}, ${country}`;
+function setTown(town) {
+  townDisplay.textContent = `${town},`;
+}
+
+function setCountry(country) {
+  countryDisplay.textContent = `${country}`;
 }
 
 function setTemperature(celsius, fahrenheit) {
@@ -69,7 +74,8 @@ function toggleImperial(futureImperial) {
 }
 
 const CurrentDisplay = {
-  setLocation,
+  setTown,
+  setCountry,
   setTemperature,
   setRainChance,
   setWindSpeed,

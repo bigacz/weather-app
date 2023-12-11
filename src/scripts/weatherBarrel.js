@@ -36,7 +36,8 @@ async function handleLocationChange(location) {
 function setCurrentDisplay(current) {
   CurrentDisplay.setTemperature(current.celsius, current.fahrenheit);
   CurrentDisplay.setClock(current.time);
-  CurrentDisplay.setLocation(current.town, current.country);
+  CurrentDisplay.setTown(current.town);
+  CurrentDisplay.setCountry(current.country);
   CurrentDisplay.setRainChance(current.rainChance);
   CurrentDisplay.setWindSpeed(current.windKph, current.windMph);
   CurrentDisplay.setHumidity(current.humidity);

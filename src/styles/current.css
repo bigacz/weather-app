@@ -17,4 +17,5 @@ main {
 
 .current-weather_container {
   grid-area: container;
+  grid-template-areas: '';
 }
