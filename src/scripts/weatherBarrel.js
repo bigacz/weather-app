@@ -38,7 +38,7 @@ function setCurrentDisplay(current) {
   CurrentDisplay.setClock(current.time);
   CurrentDisplay.setTown(current.town);
   CurrentDisplay.setCountry(current.country);
-  CurrentDisplay.setRainChance(current.rainChance);
+  CurrentDisplay.setPrecip(current.rainChance, current.snowChance);
   CurrentDisplay.setWindSpeed(current.windKph, current.windMph);
   CurrentDisplay.setHumidity(current.humidity);
   CurrentDisplay.setWeatherIcon(current.weatherCode);

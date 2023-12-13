@@ -15,25 +15,76 @@
       </form>
 
       <div class="current-weather_container">
+        <p id="current-weather_town" class="current-weather_town"></p>
+        <p id="current-weather_country" class="current-weather_country"></p>
+        <p id="current-weather_clock" class="current-weather_clock"></p>
+        <p
+          id="current-weather_temperature"
+          class="current-weather_temperature"
+        ></p>
 
+        <img
+          alt="weather icon"
+          id="current-weather_icon"
+          class="weather-icon"
+        />
 
-        <p id="current-weather_town"></p>
-        <p id="current-weather_country"></p>
-        
-        <p id="current-weather_clock"></p>
-        <p id="current-weather_temperature"></p>
-        <p id="current-weather_rain-chance"></p>
-        <p id="current-weather_wind-speed"></p>
-        <p id="current-weather_humidity"></p>
-        <p id="current-weather_condition-text"></p>
-        <img alt="weather icon" id="current-weather_icon" class="weather-icon" />
+        <p
+          id="current-weather_condition-text"
+          class="current-weather_condition-text"
+        ></p>
+
+        <ul class="current-weather_list">
+          <li>
+            <p
+              id="current-weather_precip-text"
+              class="current-weather_list-text"
+            >
+              Rain chance
+            </p>
+            <img
+              src="./assets/rain.svg"
+              alt=""
+              id="current-weather_precip-icon"
+              class="current-weather_list-icon"
+            />
+            <p
+              id="current-weather_precip"
+              class="current-weather_list-value"
+            ></p>
+          </li>
+
+          <li>
+            <p class="current-weather_list-text">Wind speed</p>
+            <img
+              src="./assets/wind.svg"
+              alt=""
+              class="current-weather_list-icon"
+            />
+            <p
+              id="current-weather_wind-speed"
+              class="current-weather_list-value"
+            ></p>
+          </li>
+
+          <li>
+            <p class="current-weather_list-text">Humidity</p>
+            <img
+              src="./assets/humidity.svg"
+              alt=""
+              class="current-weather_list-icon"
+            />
+            <p
+              id="current-weather_humidity"
+              class="current-weather_list-value"
+            ></p>
+          </li>
+        </ul>
       </div>
     </main>
 
     <div id="hour-weather_wrapper" class="hour-weather_wrapper">
-      <div id="hour-weather_slider" class="hour-weather_slider">
-
-      </div>
+      <div id="hour-weather_slider" class="hour-weather_slider"></div>
     </div>
 
     <div class="day-weather_container" id="day-weather_container"></div>
@@ -43,14 +94,14 @@
     <div class="hour-weather_item">
       <p class="hour-weather_date"></p>
       <div>
-        <img class="hour-weather_weather-icon" src="" alt="weather icon" />
+        <img class="hour-weather_weather-icon" alt="weather icon" />
       </div>
       <div class="hour-weather_item-bottom">
         <p class="hour-weather_temperature"></p>
 
         <div class="hour-weather_precip">
-          <p class="hour-weather_precip-value"></p> 
-          <img class="hour-weather_precip-image"></p>
+          <p class="hour-weather_precip-value"></p>
+          <img class="hour-weather_precip-image" />
         </div>
       </div>
     </div>
@@ -58,18 +109,17 @@
 
   <template id="day-weather_template">
     <div class="day-weather_item">
-      <p class="day-weather_date"></pf>
+      <p class="day-weather_date"></p>
       <div>
-        <img class="day-weather_weather-icon" src="" alt="weather icon" />
+        <img class="day-weather_weather-icon" alt="weather icon" />
       </div>
       <div class="day-weather_item-bottom">
         <p class="day-weather_temperature"></p>
 
         <div class="day-weather_precip">
-          <p class="day-weather_precip-value"></p> 
-          <img class="day-weather_precip-image"></p>
+          <p class="day-weather_precip-value"></p>
+          <img class="day-weather_precip-image" />
         </div>
-
       </div>
     </div>
   </template>

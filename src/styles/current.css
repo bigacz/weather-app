@@ -1,8 +1,3 @@
-main img {
-  height: 100px;
-  width: 100px;
-}
-
 main {
   display: grid;
   grid-template-areas: 'container form';
@@ -16,6 +11,64 @@ main {
 }
 
 .current-weather_container {
+  display: grid;
   grid-area: container;
-  grid-template-areas: '';
+  grid-template-areas:
+    'town town'
+    'country country'
+    'clock clock'
+    'temperature icon'
+    'text text'
+    'list list';
+}
+
+.current-weather_town {
+  grid-area: town;
+}
+
+.current-weather_country {
+  grid-area: country;
+}
+
+.current-weather_clock {
+  grid-area: clock;
+}
+
+.current-weather_temperature {
+  grid-area: temperature;
+}
+
+.current-weather_condition-text {
+  grid-area: text;
+}
+
+.current-weather_list {
+  grid-area: list;
+
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+}
+
+.current-weather_list li {
+  display: flex;
+  display: grid;
+  grid-template-areas:
+    'icon text'
+    'icon value';
+  grid-template-rows: 1rem 2rem;
+  grid-template-columns: max-content max-content;
+}
+
+.current-weather_list-icon {
+  grid-area: icon;
+}
+
+.current-weather_list-text {
+  grid-area: text;
+}
+
+.current-weather_list-value {
+  grid-area: value;
 }

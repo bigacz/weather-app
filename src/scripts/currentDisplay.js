@@ -8,9 +8,6 @@ const countryDisplay = document.getElementById('current-weather_country');
 const temperatureDisplay = document.getElementById(
   'current-weather_temperature'
 );
-const rainChanceDisplay = document.getElementById(
-  'current-weather_rain-chance'
-);
 const windSpeedDisplay = document.getElementById('current-weather_wind-speed');
 const humidityDisplay = document.getElementById('current-weather_humidity');
 const weatherIconDisplay = document.getElementById('current-weather_icon');
@@ -18,6 +15,14 @@ const conditionTextDisplay = document.getElementById(
   'current-weather_condition-text'
 );
 const clockDisplay = document.getElementById('current-weather_clock');
+
+const precipDisplay = document.getElementById('current-weather_precip');
+const precipTextDisplay = document.getElementById(
+  'current-weather_precip-text'
+);
+const precipIconDisplay = document.getElementById(
+  'current-weather_precip-icon'
+);
 
 // Display functions //
 
@@ -37,20 +42,40 @@ function setTemperature(celsius, fahrenheit) {
   }
 }
 
-function setRainChance(rainChance) {
-  rainChanceDisplay.textContent = `${rainChance}%`;
+function setPrecip(rainChance, snowChance) {
+  const isSnowGreater = snowChance > rainChance;
+
+  let precipContent;
+  let precipImageSrc;
+  let precipText;
+  if (isSnowGreater) {
+    precipContent = `${snowChance}%`;
+    precipImageSrc = IconManager.getWeatherIcon(5);
+    precipText = 'Snow chance';
+  } else {
+    precipContent = `${rainChance}%`;
+    precipImageSrc = IconManager.getWeatherIcon(4);
+    precipText = 'Rain chance';
+  }
+
+  precipDisplay.textContent = precipContent;
+  precipIconDisplay.src = precipImageSrc;
+  precipTextDisplay.textContent = precipText;
 }
 
 function setWindSpeed(kilometers, miles) {
+  let units;
   if (useImperial) {
-    windSpeedDisplay.textContent = `${miles} mph`;
+    units = `${Math.round(miles)} mph`;
   } else {
-    windSpeedDisplay.textContent = `${kilometers} kph`;
+    units = `${Math.round(kilometers)} kph`;
   }
+
+  windSpeedDisplay.textContent = units;
 }
 
 function setHumidity(humidity) {
-  humidityDisplay.textContent = `${humidity} %`;
+  humidityDisplay.textContent = `${humidity}%`;
 }
 
 function setWeatherIcon(code) {
@@ -77,7 +102,7 @@ const CurrentDisplay = {
   setTown,
   setCountry,
   setTemperature,
-  setRainChance,
+  setPrecip,
   setWindSpeed,
   setHumidity,
   setWeatherIcon,
