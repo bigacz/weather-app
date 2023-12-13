@@ -20,14 +20,20 @@ main {
     'temperature icon'
     'text text'
     'list list';
+  grid-template-rows: repeat(3, max-content) 5rem;
+  grid-template-columns: min-content max-content;
+  row-gap: 0.2rem;
+  column-gap: 1rem;
 }
 
 .current-weather_town {
   grid-area: town;
+  font-size: 3rem;
 }
 
 .current-weather_country {
   grid-area: country;
+  font-size: 3rem;
 }
 
 .current-weather_clock {
@@ -36,15 +42,18 @@ main {
 
 .current-weather_temperature {
   grid-area: temperature;
+  font-size: 5rem;
 }
 
 .current-weather_condition-text {
   grid-area: text;
+  font-size: 2rem;
+  padding: 0.5rem 0rem;
 }
 
 .current-weather_list {
+  gap: 0.5rem;
   grid-area: list;
-
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -59,6 +68,8 @@ main {
     'icon value';
   grid-template-rows: 1rem 2rem;
   grid-template-columns: max-content max-content;
+  column-gap: 0.5rem;
+  row-gap: 0.1rem;
 }
 
 .current-weather_list-icon {
@@ -71,4 +82,5 @@ main {
 
 .current-weather_list-value {
   grid-area: value;
+  font-size: 1.5rem;
 }

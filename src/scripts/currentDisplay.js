@@ -36,9 +36,9 @@ function setCountry(country) {
 
 function setTemperature(celsius, fahrenheit) {
   if (useImperial) {
-    temperatureDisplay.textContent = `${fahrenheit} °F`;
+    temperatureDisplay.textContent = `${fahrenheit}°F`;
   } else {
-    temperatureDisplay.textContent = `${celsius} °C`;
+    temperatureDisplay.textContent = `${celsius}°C`;
   }
 }
 
