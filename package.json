@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "date-fns": "^2.30.0",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "pubsub-js": "^1.9.4"
   }
 }

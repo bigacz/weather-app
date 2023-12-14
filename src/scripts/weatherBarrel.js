@@ -1,36 +1,39 @@
+import PubSub from 'pubsub-js';
+
 import CurrentDisplay from './currentDisplay';
 import DaysDisplay from './daysDisplay';
 import HoursDisplay from './hoursDisplay';
 import WeatherData from './weatherData';
+import searchForm from './searchForm';
 
-const searchInput = document.getElementById('search-town-input');
-const searchInputError = document.getElementById('search-town-input-error');
-const searchSubmitButton = document.getElementById('search-submit');
-
-searchSubmitButton.addEventListener('click', (event) => {
-  const location = searchInput.value;
-  handleLocationChange(location);
-  event.preventDefault();
+PubSub.subscribe('locationChange', handleLocationChange);
+PubSub.subscribe('unitsChange', (message, useImperial) => {
+  changeUnits(useImperial);
+  reloadDisplays();
 });
 
-async function handleLocationChange(location) {
+async function handleLocationChange(message, location) {
   try {
     const response = await WeatherData.updateByTown(location);
 
-    const currentData = WeatherData.getCurrentData();
-    const daysData = WeatherData.getDaysData();
-    const hoursData = WeatherData.getHoursData();
-
-    console.log(currentData);
-    console.log(daysData);
-    console.log(hoursData);
-
-    setCurrentDisplay(currentData);
-    setDaysDisplay(daysData);
-    setHoursDisplay(hoursData);
+    reloadDisplays();
   } catch (error) {
-    displayError(error.text);
+    searchForm.displayError(error.text);
   }
+}
+
+function reloadDisplays() {
+  const currentData = WeatherData.getCurrentData();
+  const daysData = WeatherData.getDaysData();
+  const hoursData = WeatherData.getHoursData();
+
+  console.log(currentData);
+  console.log(daysData);
+  console.log(hoursData);
+
+  setCurrentDisplay(currentData);
+  setDaysDisplay(daysData);
+  setHoursDisplay(hoursData);
 }
 
 function setCurrentDisplay(current) {
@@ -53,20 +56,12 @@ function setHoursDisplay(hours) {
   HoursDisplay.updateHours(hours);
 }
 
-function toggleImperial(useImperial) {
+function changeUnits(useImperial) {
   CurrentDisplay.toggleImperial(useImperial);
   DaysDisplay.toggleImperial(useImperial);
   HoursDisplay.toggleImperial(useImperial);
 }
 
-function displayError(errorText) {
-  searchInputError.textContent = errorText;
-}
-
 // Helper //
 
 export default {};
-
-// Testing //
-searchInput.value = 'auto:ip';
-searchSubmitButton.click();

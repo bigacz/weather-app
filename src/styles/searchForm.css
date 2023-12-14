@@ -1,0 +1,13 @@
+.units-toggle {
+  appearance: none;
+  outline: none;
+}
+
+.units-toggle::before {
+  display: block;
+  content: '';
+  background-color: white;
+  height: 2rem;
+  width: 5rem;
+  border-radius: 60px;
+}
