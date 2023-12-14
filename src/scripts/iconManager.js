@@ -1,10 +1,10 @@
+import humidityIcon from '../assets/humidity.svg';
+import windIcon from '../assets/wind.svg';
 import sunIcon from '../assets/sun.svg';
 import moonIcon from '../assets/moon.svg';
 import cloudIcon from '../assets/cloud.svg';
 import rainIcon from '../assets/rain.svg';
 import snowIcon from '../assets/snow.svg';
-import humidityIcon from '../assets/humidity.svg';
-import windIcon from '../assets/wind.svg';
 
 function getWeatherIcon(code) {
   let image;

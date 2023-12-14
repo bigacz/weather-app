@@ -4,6 +4,7 @@ import CurrentDisplay from './currentDisplay';
 import DaysDisplay from './daysDisplay';
 import HoursDisplay from './hoursDisplay';
 import WeatherData from './weatherData';
+import BackgroundManager from './backgroundManager';
 import searchForm from './searchForm';
 
 PubSub.subscribe('locationChange', handleLocationChange);
@@ -46,6 +47,8 @@ function setCurrentDisplay(current) {
   CurrentDisplay.setHumidity(current.humidity);
   CurrentDisplay.setWeatherIcon(current.weatherCode);
   CurrentDisplay.setConditionText(current.conditionText);
+
+  BackgroundManager.changeBackground(current.weatherCode);
 }
 
 function setDaysDisplay(days) {
