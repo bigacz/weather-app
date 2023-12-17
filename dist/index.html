@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <main>
+      <form class="current-weather_form">
+        <div class="search-town">
+          <input
+            type="text"
+            class="search-town_input"
+            id="search-town_input"
+            placeholder="Search town..."
+            spellcheck="false"
+            autocomplete="off"
+          />
+          <button
+            type="submit"
+            id="search-town_submit"
+            class="search-town_submit"
+          >
+            Search
+          </button>
+          <p id="search-town_error" class="search-town_error"></p>
+        </div>
+
+        <div class="units">
+          <label for="units-checkbox" class="units-label">Imperial units</label>
+          <input type="checkbox" class="units-checkbox" id="units-checkbox" />
+        </div>
+      </form>
+
+      <div class="current-weather_container">
+        <p id="current-weather_town" class="current-weather_town"></p>
+        <p id="current-weather_country" class="current-weather_country"></p>
+        <p id="current-weather_clock" class="current-weather_clock"></p>
+
+        <p
+          id="current-weather_temperature"
+          class="current-weather_temperature"
+        ></p>
+
+        <img
+          alt="weather icon"
+          id="current-weather_icon"
+          class="weather-icon"
+        />
+
+        <p
+          id="current-weather_condition-text"
+          class="current-weather_condition-text"
+        ></p>
+
+        <ul class="current-weather_list">
+          <li>
+            <p
+              id="current-weather_precip-text"
+              class="current-weather_list-text"
+            >
+              Rain chance
+            </p>
+            <img
+              src="1b865d37c71f313eab91.svg"
+              alt=""
+              id="current-weather_precip-icon"
+              class="current-weather_list-icon"
+            />
+            <p
+              id="current-weather_precip"
+              class="current-weather_list-value"
+            ></p>
+          </li>
+
+          <li>
+            <p class="current-weather_list-text">Wind speed</p>
+            <img
+              src="c35ec3c62633f5047a93.svg"
+              alt=""
+              class="current-weather_list-icon"
+            />
+            <p
+              id="current-weather_wind-speed"
+              class="current-weather_list-value"
+            ></p>
+          </li>
+
+          <li>
+            <p class="current-weather_list-text">Humidity</p>
+            <img
+              src="8d6c0fbf3fa41d6423d2.svg"
+              alt=""
+              class="current-weather_list-icon"
+            />
+            <p
+              id="current-weather_humidity"
+              class="current-weather_list-value"
+            ></p>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <div id="hour-weather_wrapper" class="hour-weather_wrapper">
+      <div id="hour-weather_slider" class="hour-weather_slider"></div>
+    </div>
+
+    <div class="day-weather_container" id="day-weather_container"></div>
+  <script defer src="main.js"></script></body>
+
+  <template id="hour-weather_template">
+    <div class="hour-weather_item">
+      <p class="hour-weather_date"></p>
+      <div>
+        <img class="hour-weather_weather-icon" alt="weather icon" />
+      </div>
+      <div class="hour-weather_item-bottom">
+        <p class="hour-weather_temperature"></p>
+
+        <div class="hour-weather_precip">
+          <img class="hour-weather_precip-image" />
+          <p class="hour-weather_precip-value"></p>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="day-weather_template">
+    <div class="day-weather_item">
+      <p class="day-weather_date"></p>
+      <div>
+        <img class="day-weather_weather-icon" alt="weather icon" />
+      </div>
+      <div class="day-weather_item-bottom">
+        <p class="day-weather_temperature"></p>
+
+        <div class="day-weather_precip">
+          <img class="day-weather_precip-image" />
+          <p class="day-weather_precip-value"></p>
+        </div>
+      </div>
+    </div>
+  </template>
+</html>
