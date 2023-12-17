@@ -1,15 +1,17 @@
 import PubSub from 'pubsub-js';
 
-const searchInput = document.getElementById('search-town-input');
-const searchInputError = document.getElementById('search-town-input-error');
-const searchSubmitButton = document.getElementById('search-submit');
+const searchInput = document.getElementById('search-town_input');
+const searchInputError = document.getElementById('search-town_error');
+const searchSubmitButton = document.getElementById('search-town_submit');
 const unitsCheckbox = document.getElementById('units-checkbox');
 
 searchSubmitButton.addEventListener('click', (event) => {
   event.preventDefault();
+  displayError('');
 
   const location = searchInput.value;
   PubSub.publish('locationChange', location);
+  searchInput.value = '';
 });
 
 unitsCheckbox.addEventListener('click', () => {

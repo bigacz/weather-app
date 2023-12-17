@@ -4,6 +4,20 @@
   --light-gray: #6b6b6b;
 
   --rpadding1: clamp(0.1rem, 0.2vw, 1rem);
+  --shadow-filter: drop-shadow(2px 2px black);
+  --shadow-text: 2px 2px black;
+  --shadow-text2: 1px 1px black;
+  --shadow-box: 2px 2px black;
+}
+
+img {
+  filter: drop-shadow(2px 2px black);
+}
+
+::placeholder,
+label,
+p {
+  text-shadow: var(--shadow-text);
 }
 
 * {

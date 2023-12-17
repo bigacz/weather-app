@@ -1,18 +1,78 @@
-.units-toggle {
+.search-town {
+  display: grid;
+  grid-template-areas:
+    'input submit'
+    'error error';
+  grid-template-rows: max-content 1rem;
+  gap: 0.5rem;
+}
+
+.search-town_input {
+  grid-area: input;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  border-bottom: 3px solid white;
+  font-weight: 600;
+  text-shadow: var(--shadow-text);
+}
+
+.search-town_input::placeholder {
+  color: white;
+  font-weight: 500;
+}
+
+.search-town_submit {
+  grid-area: submit;
+  color: black;
+  background: white;
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-box);
+  outline: none;
+  border: none;
+}
+
+.search-town_error {
+  text-shadow: var(--shadow-text2);
+  font-weight: 600;
+  color: red;
+  grid-area: error;
+}
+
+.units {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  align-items: center;
+  gap: 1rem;
+}
+
+.units-label {
+  font-size: 1.3rem;
+}
+
+.units-checkbox {
+  box-shadow: var(--shadow-box);
   position: relative;
   appearance: none;
   outline: none;
-  background-color: white;
+  background-color: rgb(255, 47, 47);
   height: 2rem;
   width: 4rem;
   border-radius: 60px;
 }
 
-.units-toggle::before {
+.units-checkbox:checked {
+  background-color: rgb(2, 199, 2);
+}
+
+.units-checkbox::before {
   position: absolute;
   display: block;
   content: '';
-  background-color: rgb(46, 46, 45);
+  background-color: white;
   height: 1.5rem;
   width: 1.5rem;
   border-radius: 60px;
@@ -20,9 +80,11 @@
   left: 1rem;
   transform: translate(-50%, -50%);
   transition: transform 0.3s ease-out;
+
+  box-shadow: 2px 2px 5px -1px black;
 }
 
-.units-toggle:checked::before {
+.units-checkbox:checked::before {
   position: absolute;
   display: block;
   content: '';

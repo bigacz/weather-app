@@ -10,8 +10,8 @@ import './scripts/hoursCarousel';
 
 // Testing
 
-const searchInput = document.getElementById('search-town-input');
-const searchSubmitButton = document.getElementById('search-submit');
+const searchInput = document.getElementById('search-town_input');
+const searchSubmitButton = document.getElementById('search-town_submit');
 
 searchInput.value = 'auto:ip';
 searchSubmitButton.click();

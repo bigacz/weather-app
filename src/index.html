@@ -8,12 +8,29 @@
   <body>
     <main>
       <form class="current-weather_form">
-        <label for="search-town-input">Town:</label>
-        <input type="text" id="search-town-input" name="search-town-input" />
-        <p id="search-town-input-error"></p>
-        <button type="submit" id="search-submit">Search</button>
+        <div class="search-town">
+          <input
+            type="text"
+            class="search-town_input"
+            id="search-town_input"
+            placeholder="Search town..."
+            spellcheck="false"
+            autocomplete="off"
+          />
+          <button
+            type="submit"
+            id="search-town_submit"
+            class="search-town_submit"
+          >
+            Search
+          </button>
+          <p id="search-town_error" class="search-town_error"></p>
+        </div>
 
-        <input type="checkbox" class="units-toggle" id="units-checkbox" />
+        <div class="units">
+          <label for="units-checkbox" class="units-label">Imperial units</label>
+          <input type="checkbox" class="units-checkbox" id="units-checkbox" />
+        </div>
       </form>
 
       <div class="current-weather_container">
@@ -103,8 +120,8 @@
         <p class="hour-weather_temperature"></p>
 
         <div class="hour-weather_precip">
-          <p class="hour-weather_precip-value"></p>
           <img class="hour-weather_precip-image" />
+          <p class="hour-weather_precip-value"></p>
         </div>
       </div>
     </div>
@@ -120,8 +137,8 @@
         <p class="day-weather_temperature"></p>
 
         <div class="day-weather_precip">
-          <p class="day-weather_precip-value"></p>
           <img class="day-weather_precip-image" />
+          <p class="day-weather_precip-value"></p>
         </div>
       </div>
     </div>
