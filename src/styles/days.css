@@ -1,3 +1,15 @@
+.day-weather_container p {
+  text-shadow: var(--shadow-text2);
+}
+
+.day-weather_container img {
+  filter: var(--shadow-filter);
+}
+
+.day-weather_precip img {
+  filter: var(--shadow-filter2);
+}
+
 .day-weather_container {
   white-space: nowrap;
   display: grid;
@@ -9,13 +21,16 @@
 }
 
 .day-weather_item {
-  background-color: var(--light-gray);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content 1fr max-content;
   justify-items: center;
   padding: var(--rpadding1);
   aspect-ratio: 1 / 1;
+
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 16px;
 }
 
 .day-weather_item-bottom {
@@ -27,4 +42,9 @@
 .day-weather_precip {
   display: grid;
   grid-auto-flow: column;
+}
+
+.day-weather_date {
+  font-weight: 600;
+  font-size: 1.1rem;
 }

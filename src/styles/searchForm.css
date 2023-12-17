@@ -1,3 +1,7 @@
+.units label {
+  text-shadow: var(--shadow-text);
+}
+
 .search-town {
   display: grid;
   grid-template-areas:
@@ -8,6 +12,7 @@
 }
 
 .search-town_input {
+  filter: var(--shadow-filter);
   grid-area: input;
   outline: none;
   border: none;
@@ -15,7 +20,6 @@
   color: white;
   border-bottom: 3px solid white;
   font-weight: 600;
-  text-shadow: var(--shadow-text);
 }
 
 .search-town_input::placeholder {

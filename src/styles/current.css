@@ -3,10 +3,22 @@ main {
   grid-template-areas: 'container form';
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  justify-items: center;
+}
+
+main > * {
+  padding: 0 15rem;
+}
+
+main img {
+  filter: var(--shadow-filter);
+}
+
+main p {
+  text-shadow: var(--shadow-text);
 }
 
 .current-weather_form {
+  justify-self: end;
   grid-area: form;
 }
 
