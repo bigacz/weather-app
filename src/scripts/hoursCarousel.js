@@ -36,7 +36,7 @@ wrapper.addEventListener('mousemove', (event) => {
   const offset = event.clientX - startX;
   const diff = offset - lastOffset;
 
-  slider.style.transform = `translate(-${currentTransform - diff}px)`;
+  setTransformX(currentTransform - diff);
   lastOffset = offset;
 
   checkBoundary();
@@ -50,7 +50,7 @@ function checkBoundary() {
   const containersDiff = sliderWidth - wrapperWidth;
 
   if (containersDiff < currentTransform) {
-    slider.style.transform = `translate(-${containersDiff}px)`;
+    setTransformX(containersDiff);
   }
 }
 
@@ -60,3 +60,17 @@ function getTransformX() {
 
   return currentX;
 }
+
+function setTransformX(transformValue) {
+  slider.style.transform = `translate(-${transformValue}px)`;
+}
+
+function restartCarousel() {
+  setTransformX(0);
+}
+
+const HoursCarousel = {
+  restartCarousel,
+};
+
+export default HoursCarousel;

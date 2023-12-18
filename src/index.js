@@ -6,7 +6,6 @@ import './styles/hours.css';
 import './styles/searchForm.css';
 
 import WeatherBarrel from './scripts/weatherBarrel';
-import './scripts/hoursCarousel';
 
 // Testing
 

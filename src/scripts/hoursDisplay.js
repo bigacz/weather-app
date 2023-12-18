@@ -1,5 +1,6 @@
 import { format, setHours } from 'date-fns';
 import IconManager from './iconManager';
+import HoursCarousel from './hoursCarousel';
 
 let useImperial = false;
 
@@ -12,6 +13,8 @@ function updateHours(hours) {
   allDays.forEach((element) => {
     addHour(element);
   });
+
+  HoursCarousel.restartCarousel();
 }
 
 function clearDisplay() {
