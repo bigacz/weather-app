@@ -3,15 +3,20 @@
     grid-template-areas:
       'container'
       'form';
-    grid-template-columns: 1fr;
+    grid-template-columns: 100vw;
     grid-template-rows: 1fr max-content;
 
     align-items: center;
-    justify-items: center;
+    justify-items: start;
   }
 
   .current-weather_container {
+    padding: 0 0 0 var(--padding-side);
     padding-top: 1rem;
-    justify-self: start;
+  }
+
+  .current-weather_form {
+    padding: 0 0 0 var(--padding-side);
+    justify-self: auto;
   }
 }
