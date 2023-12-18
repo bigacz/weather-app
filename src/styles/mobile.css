@@ -10,11 +10,8 @@
     justify-items: center;
   }
 
-  .current-weather_form {
-    justify-self: center;
-  }
-
   .current-weather_container {
+    padding-top: 1rem;
     justify-self: start;
   }
 }
