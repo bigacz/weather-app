@@ -28,10 +28,6 @@ function reloadDisplays() {
   const daysData = WeatherData.getDaysData();
   const hoursData = WeatherData.getHoursData();
 
-  console.log(currentData);
-  console.log(daysData);
-  console.log(hoursData);
-
   setCurrentDisplay(currentData);
   setDaysDisplay(daysData);
   setHoursDisplay(hoursData);
@@ -64,6 +60,8 @@ function changeUnits(useImperial) {
   DaysDisplay.toggleImperial(useImperial);
   HoursDisplay.toggleImperial(useImperial);
 }
+
+handleLocationChange('', 'auto:ip');
 
 // Helper //
 

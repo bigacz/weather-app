@@ -43,6 +43,7 @@ wrapper.addEventListener('mousemove', (event) => {
 });
 
 // Mobile //
+
 wrapper.addEventListener('touchend', () => {
   isPressed = false;
   lastOffset = 0;
@@ -61,10 +62,6 @@ wrapper.addEventListener('touchmove', (event) => {
   const currentTransform = getTransformX();
   const offset = event.touches[0].clientX - startX;
   const diff = offset - lastOffset;
-
-  console.log({ currentTransform });
-  console.log({ offset });
-  console.log({ diff });
 
   setTransformX(currentTransform - diff);
   lastOffset = offset;
@@ -98,6 +95,10 @@ function setTransformX(transformValue) {
 function restartCarousel() {
   setTransformX(0);
 }
+
+window.addEventListener('resize', (event) => {
+  restartCarousel();
+});
 
 const HoursCarousel = {
   restartCarousel,

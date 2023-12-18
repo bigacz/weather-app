@@ -26,7 +26,7 @@ body {
   background-image: url(../assets/images/sun.jpg);
   background-repeat: no-repeat;
   color: white;
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: 1fr max-content;
   gap: 3vh;

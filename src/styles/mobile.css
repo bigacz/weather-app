@@ -1,0 +1,20 @@
+@media (max-width: 800px) {
+  main {
+    grid-template-areas:
+      'container'
+      'form';
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr max-content;
+
+    align-items: center;
+    justify-items: center;
+  }
+
+  .current-weather_form {
+    justify-self: center;
+  }
+
+  .current-weather_container {
+    justify-self: start;
+  }
+}
