@@ -42,6 +42,36 @@ wrapper.addEventListener('mousemove', (event) => {
   checkBoundary();
 });
 
+// Mobile //
+wrapper.addEventListener('touchend', () => {
+  isPressed = false;
+  lastOffset = 0;
+});
+
+wrapper.addEventListener('touchstart', (event) => {
+  isPressed = true;
+  startX = event.touches[0].clientX;
+});
+
+wrapper.addEventListener('touchmove', (event) => {
+  if (!isPressed) {
+    return;
+  }
+
+  const currentTransform = getTransformX();
+  const offset = event.touches[0].clientX - startX;
+  const diff = offset - lastOffset;
+
+  console.log({ currentTransform });
+  console.log({ offset });
+  console.log({ diff });
+
+  setTransformX(currentTransform - diff);
+  lastOffset = offset;
+
+  checkBoundary();
+});
+
 function checkBoundary() {
   const currentTransform = getTransformX();
   const wrapperWidth = wrapper.offsetWidth;
