@@ -1,0 +1,15 @@
+.loading-modal_container {
+  position: absolute;
+}
+
+.loading-modal_spinner {
+  color: white;
+  fill: white;
+  height: 100px;
+  width: 100px;
+}
+
+.loading-modal_spinner svg {
+  color: white;
+  fill: white;
+}

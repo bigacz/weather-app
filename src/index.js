@@ -1,9 +1,4 @@
-import 'normalize.css';
-import './styles/general.css';
-import './styles/current.css';
-import './styles/mobile.css';
-import './styles/days.css';
-import './styles/hours.css';
-import './styles/searchForm.css';
+import './scripts/stylesLoader';
 
+import LoadingModal from './scripts/loadingModal';
 import WeatherBarrel from './scripts/weatherBarrel';
