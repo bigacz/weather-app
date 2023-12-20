@@ -6,6 +6,7 @@ import HoursDisplay from './hoursDisplay';
 import WeatherData from './weatherData';
 import BackgroundManager from './backgroundManager';
 import searchForm from './searchForm';
+import LoadingModal from './loadingModal';
 
 PubSub.subscribe('locationChange', handleLocationChange);
 PubSub.subscribe('unitsChange', (message, useImperial) => {
@@ -15,10 +16,13 @@ PubSub.subscribe('unitsChange', (message, useImperial) => {
 
 async function handleLocationChange(message, location) {
   try {
+    LoadingModal.showModal();
     const response = await WeatherData.updateByTown(location);
 
     reloadDisplays();
+    LoadingModal.hideModal();
   } catch (error) {
+    LoadingModal.hideModal();
     searchForm.displayError(error.text);
   }
 }

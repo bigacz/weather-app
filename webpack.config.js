@@ -37,4 +37,5 @@ module.exports = {
       inject: 'body',
     }),
   ],
+  cache: false,
 };
