@@ -51,11 +51,11 @@ function setPrecip(rainChance, snowChance) {
   if (isSnowGreater) {
     precipContent = `${snowChance}%`;
     precipImageSrc = IconManager.getWeatherIcon(5);
-    precipText = 'Snow chance';
+    precipText = 'Snow';
   } else {
     precipContent = `${rainChance}%`;
     precipImageSrc = IconManager.getWeatherIcon(4);
-    precipText = 'Rain chance';
+    precipText = 'Rain';
   }
 
   precipDisplay.textContent = precipContent;
